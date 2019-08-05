@@ -39,6 +39,6 @@ poutcome_replaced = contact_replaced.replace(['unknown', 'failure', 'other', 'su
 poutcome_replaced.to_csv("E:\\Nayan\\Sesh\\numeric_training_data1.csv", index = False)
 
 #split the dataset into training and testing
-train_x, test_x = train_test_split(poutcome_replaced, test_size=0.2)
+#train_x, test_x = train_test_split(poutcome_replaced, test_size=0.2)
 
 
