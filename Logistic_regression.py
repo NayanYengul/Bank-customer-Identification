@@ -16,6 +16,20 @@ labelEncoder_y = LabelEncoder()
 y_array = labelEncoder_y.fit_transform(data_y)
 y = pd.DataFrame(y_array, columns=['output'])
 
+#Variance Inflation Factor
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+vif = pd.DataFrame()
+vif["VIF Factor"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
+vif["features"] = X.columns
+print(vif)
+
+#Drop job_"entrepreneur" column as it is equivalent to self employed
+X = X.drop(['job_entrepreneur'], axis=1)
+
+#Drop "Default-no" column as VIF is 49.879119
+X = X.drop(['default_no'], axis=1)
+print(X.shape)
+
 #Concat X and y
 dataX_y = X.join(y)
 
@@ -40,23 +54,27 @@ X_over_sampled = pd.concat([df_class_0, df_class_over_1], axis=0)
 print(X_over_sampled['output'].value_counts())
 
 #X matrix and y vector
-X = X_over_sampled.iloc[:, :39].values
-y = X_over_sampled.iloc[:, 39].values
+X = X_over_sampled.iloc[:, :37].values
+y = X_over_sampled.iloc[:, 37].values
 print("X_shape:", X.shape)
+print(X)
 print("y_shape:", y.shape)
+print(y)
 
 #Split dataset into training and testing
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state= 0)
+print("X_test_shape:", X_test.shape)
+print("y_test_shape:", y_test.shape)
+
 
 from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression(random_state=0)
 classifier.fit(X_train, y_train)
 
-
 #predict test set result
 y_pred = classifier.predict(X_test)
-
+print("y_pred_shape: ", y_pred.shape)
 
 #confusion matrix
 from sklearn.metrics import confusion_matrix
