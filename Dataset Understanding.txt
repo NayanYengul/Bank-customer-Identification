@@ -1,0 +1,34 @@
+Bank Marketing Dataset
+
+1) Info:
+Portugese Bank is rolling out a new Term Deposite plan, for which they are doing campaign of customers to spread information about new plan. They have previous campaign dataset available, from which they wanted to have a list of interested customers to whom they should contact. 
+
+2) Dataset Information using pandas library:
+Size : 31647*18
+
+RangeIndex: 31647 entries, 0 to 31646
+Data columns (total 18 columns):
+age          31647 non-null int64
+job          31647 non-null object
+marital      31647 non-null object
+education    31647 non-null object
+default      31647 non-null object
+balance      31647 non-null int64
+housing      31647 non-null object
+loan         31647 non-null object
+contact      31647 non-null object
+day          31647 non-null int64
+month        31647 non-null object
+duration     31647 non-null int64
+campaign     31647 non-null int64
+pdays        31647 non-null int64
+previous     31647 non-null int64
+poutcome     31647 non-null object
+ID           31647 non-null int64
+y            31647 non-null object
+dtypes: int64(8), object(10)
+memory usage: 4.3+ MB
+
+3) Data taken in May 2008 to Nov 2010 
+
+4) External Link: https://archive.ics.uci.edu/ml/datasets/Bank+Marketing
